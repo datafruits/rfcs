@@ -7,7 +7,7 @@ do
   git add OUTFILE
 done
 
-if [-z $CHANGED_DIAGRAMS]
+if [ -z $CHANGED_DIAGRAMS ]
 then
   exit 0
 fi
