@@ -150,7 +150,7 @@ Anyway, there are already docker images for both components of this setup, so wi
 
 #### Video Streaming 📹
 
-Another cool think datafruits has is video streaming. The code for this lives (confusingly separate from streampusher) in [datafruits/viz](https://github.com/datafruits/viz). Currently, it's built on [`nginx-rtmp-module`](https://www.nginx.com/products/nginx/modules/rtmp-media-streaming/), which is a laughably simple way to set up video streaming. The repo reflects this, having literally two files.
+Another cool thing that datafruits has is video streaming. The code for this lives (confusingly separate from streampusher) in [datafruits/viz](https://github.com/datafruits/viz). Currently, it's built on [`nginx-rtmp-module`](https://www.nginx.com/products/nginx/modules/rtmp-media-streaming/), which is a laughably simple way to set up video streaming. The repo reflects this, having literally two files.
 
 This should also be pretty easy to containerize, given that the [README](https://github.com/datafruits/viz/blob/master/README.md) is basically already a [Dockerfile](https://docs.docker.com/engine/reference/builder/).
 
