@@ -1,0 +1,27 @@
+graph TD
+  listener(listeners)
+
+  listener---|*.datafruits.fm|ingress
+  listener---|static.datafruits.fm|s3
+
+  subgraph K8s
+  ingress[Ingress]
+  api{API}
+  site[Client Site]
+  chat[Chat Server]
+  audio[Audio Stream Output]
+  video[Video Stream Output]
+  end 
+
+  ingress---|datafruits.fm|site
+  ingress---|api.datafruits.fm|api
+  ingress---|datafruits.fm/chat|chat
+  ingress---|datafruits.fm/live|audio
+  ingress---|datafruits.fm/viz|video
+
+  subgraph Managed
+  db[(SQL DB)]
+  s3[(Static Files)]
+  end
+
+  api---db

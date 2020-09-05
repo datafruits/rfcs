@@ -1,0 +1,26 @@
+graph TD
+  dj("DJs & VJs")
+
+  dj---|*.datafruits.fm|ingress
+
+  subgraph K8s
+  ingress[Ingress]
+  api{API}
+  site[Admin Site]
+  audio[Audio Stream Input]
+  video[Video Stream Input]
+  end
+
+  ingress---|dash.datafruits.fm|site
+  ingress---|api.datafruits.fm|api
+  ingress---|dj.datafruits.fm|audio
+  ingress---|vj.datafruits.fm|video
+
+  subgraph Managed
+  db[(SQL DB)]
+  s3[(Static Files)] 
+  end
+
+  api-->|Update Info|db
+  api-->|Schedule Shows|db
+  api-->|Upload Broadcasts|s3

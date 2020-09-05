@@ -1,0 +1,42 @@
+graph TD
+  dev(Developer)
+
+  dev---|status.datafruits.fm|ingress
+
+  subgraph K8s
+  ingress[Ingress]
+  api{API}
+  client[Client Site]
+  chat[Chat Server]
+  admin[Admin Site]
+  status[Status Page]
+  audioin[Audio Stream Input]
+  videoin[Video Stream Input]
+  audioout[Audio Stream Output]
+  videoout[Video Stream Output]
+  fluentd[Log Aggregation]
+  analytics[Web Analytics]
+  end
+
+  ingress-->status
+  ingress-->fluentd 
+  api-->fluentd
+  chat-->fluentd
+  client-->analytics
+  admin-->analytics
+  audioin-->fluentd
+  audioout-->fluentd
+  videoin-->fluentd
+  videoout-->fluentd
+  analytics-->fluentd
+
+  subgraph Managed
+  db[(Datafruits DB)]
+  ldb[(Logging DB)]
+  s3[(Static Files)]
+  end
+
+  db-->fluentd
+  s3-->fluentd
+  fluentd-->ldb
+  fluentd-->status

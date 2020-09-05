@@ -1,0 +1,22 @@
+{
+  "name": "rfcs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/caassandra/rfcs",
+  "author": "Cassandra Fridkin <cass@swag.lgbt>",
+  "license": "MIT",
+  "scripts": {
+    "mermaid": "./diagrams/generate.sh",
+    "gen-toc": "markdown-toc -i text/0000-codify-infrastructure.md"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn mermaid && yarn gen-toc && git add text/0000-codify-infrastructure.md"
+    }
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^8.6.0",
+    "husky": "^4.2.5",
+    "markdown-toc": "^1.2.0"
+  }
+}

@@ -1,0 +1,69 @@
+graph TD
+  dev(Developer)
+  user(Fruitcake)
+  dj(DJs)
+  vj(VJs)
+  mgmt(Management)
+
+  dev-->|status.datafruits.fm|ingress
+  user-->|datafruits.fm|ingress
+  dj-->|dj.datafruits.fm, dash.datafruits.fm|ingress
+  vj-->|viz.datafruits.fm|ingress
+  mgmt-->|dash.datafruits.fm|ingress
+
+  subgraph K8s
+    ingress[Ingress]
+    api{API}
+    client[Client Site]
+    admin[Admin Site]
+    status[Status Page]
+    chat[Chat Server]
+    audioin[Audio Stream Input]
+    videoin[Video Stream Input]
+    audioout[Audio Stream Output]
+    videoout[Video Stream Output]
+    fluentd[Log Aggregation]
+    analytics[Web Analytics]
+  end
+
+  ingress-->|dash.datafruits.fm|admin
+  ingress-->|status.datafruits.fm|status
+  ingress-->|api.datafruits.fm|api
+  ingress-->|datafruits.fm|client
+  ingress-->|dj.datafruits.fm|audioin
+  ingress-->|viz.datafruits.fm|videoin
+  ingress-->|static.datafruits.fm|s3
+  ingress-->|datafruits.fm/chat|chat
+
+  client-->analytics
+  admin-->analytics
+  client-->api
+  admin-->api
+  audioin-->audioout
+  videoin-->videoout
+  audioout-->|datafruits.fm/audio|ingress
+  videoout-->|datafruits.fm/video|ingress 
+
+  ingress-->fluentd
+  api-->fluentd
+  audioin-->fluentd
+  videoin-->fluentd
+  chat-->fluentd
+  audioout-->fluentd
+  videoout-->fluentd
+  analytics-->fluentd
+
+  fluentd-->status
+
+  subgraph Managed
+    db[(SQL DB)]
+    ldb[(Logging DB)]
+    s3[(Static Files)]
+  end
+
+  api---db
+  
+
+  db-->fluentd
+  s3-->fluentd
+  fluentd-->ldb
