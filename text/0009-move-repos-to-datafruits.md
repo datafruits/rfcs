@@ -1,7 +1,7 @@
-- Start Date: (fill me in with today's date, YYYY-MM-DD)
-- RFC PR: (leave this empty)
+- Start Date: 2020-07-27
+- RFC PR: https://github.com/datafruits/rfcs/pull/9
 
-# (RFC title goes here)
+# Move streampusher repos to datafruits org
 
 ## Summary
 
