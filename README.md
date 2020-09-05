@@ -41,7 +41,8 @@ to revise it in response.
 * Build consensus and integrate feedback. RFCs that have broad support
 are much more likely to make progress than those that don't receive any
 comments.
-* Eventually, the [core team] will decide whether the RFC is a candidate
+* Update the pull request to add the number of the PR to the filename and add a link to the PR in the header of the RFC.
+* Eventually, the core team will decide whether the RFC is a candidate
 for inclusion in datafruits.
 * RFCs that are candidates for inclusion  will enter a "final comment
 period" lasting 7 days. The beginning of this period will be signaled with a
