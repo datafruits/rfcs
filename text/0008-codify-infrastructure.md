@@ -1,5 +1,5 @@
 - Start Date: 2020-07-25
-- RFC PR:
+- RFC PR: https://github.com/datafruits/rfcs/pull/8
 
 # Codify Infrastructure
 
